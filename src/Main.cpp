@@ -4,8 +4,6 @@
 #include <iomanip>
 #include <iostream>
 
-// Bug with sta
-
 int main( int argc, char* argv[] )
 {
 	// Get the max length of the argv
