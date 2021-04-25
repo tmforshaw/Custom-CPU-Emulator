@@ -115,20 +115,8 @@ public:
 							}
 						}
 
-						// Check for decimal numbers
-						for ( uint32_t i = 0; ( ARR_LENGTH( DEC_PREFIX ) > 1 ? i < ARR_LENGTH( DEC_PREFIX ) - 1 : false ); i++ )
-						{
-							if ( currentToken.value[i] != DEC_PREFIX[i] ) // Not the decimal prefix
-								break;
-							else if ( i == ARR_LENGTH( DEC_PREFIX ) - 2 ) // On final one and it was all the same
-							{
-								currentToken.type = TokenType::NUMERICAL_DEC;
-								goto addToken;
-							}
-						}
-
-						// If it was none of these things then it is unknown
-						std::runtime_error( ( std::string( "Failed to find a token for " ) + currentToken.value ).c_str() );
+						// If it was none of these then it is a decimal
+						currentToken.type = TokenType::NUMERICAL_DEC;
 
 					addToken:
 						tokens.push_back( currentToken );

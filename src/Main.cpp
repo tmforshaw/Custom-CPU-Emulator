@@ -4,10 +4,10 @@
 #include <iomanip>
 #include <iostream>
 
+// Bug with sta
+
 int main( int argc, char* argv[] )
 {
-	std::cout << argc << "    " << argv[1] << std::endl;
-
 	// Get the max length of the argv
 	uint32_t maxLength = 0;
 	uint32_t lengths[argc - 1];
