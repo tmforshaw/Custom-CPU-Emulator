@@ -184,22 +184,20 @@ public:
 									bytes.push_back( ( uint8_t )( value & 0xFF ) );
 								}
 
-								// Increment i
+								// Increment i by 2 because there are 2 following words and they've been processed
 								i += 2;
 							}
 						}
 					}
 					else // Doesn't require a register
 					{
+						// Misc
 						if ( tokens[i].value == HALT_OP || tokens[i].value == NO_OP )
 						{
 							// Add the proceeding bytes
 							bytes.push_back( operationMap[tokens[i].value].first );
 							bytes.push_back( operationMap[tokens[i].value].first );
 							bytes.push_back( operationMap[tokens[i].value].first );
-
-							// Increment i
-							i += 2;
 						}
 					}
 				}
