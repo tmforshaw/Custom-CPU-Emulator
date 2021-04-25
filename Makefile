@@ -1,9 +1,12 @@
 PROJECT_NAME = CUSTOM_CPU
 
 BUILD_DIR := bin
+RESOURCE_DIR := resources
 OBJ_DIR := lib
 SRC_DIR := src
 INCLUDE_DIR := include
+
+ASM_EXT := cus_asm
 
 CC = clang++
 C_FLAGS = -std=c++2a -I$(INCLUDE_DIR) -Wall # -O3
@@ -11,8 +14,8 @@ LINK_FLAGS =
 
 rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
 
-SRC = $(call rwildcard,$(SRC_DIR),*.cpp)
-DEPEND_SRC := $(call rwildcard,$(DEPEND_DIR),*.cpp)
+SRC = $(call rwildcard, $(SRC_DIR),*.cpp)
+RES_SRC = $(call rwildcard, $(RESOURCE_DIR), *.$(ASM_EXT))
 
 OBJS := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC)) # SRC objects
 
@@ -33,6 +36,7 @@ setup:
 clean:
 	@echo !-- Cleaning Folders --!
 	@rm -rf $(BUILD_DIR)/*
+	@rm -rf $(OBJ_DIR)/*
 
 # Remove unneeded files and dependency objects
 .PHONY: full-clean
@@ -57,4 +61,4 @@ $(BUILD_DIR)/$(PROJECT_NAME).bin: $(OBJS)
 run: build
 	@echo !-- Running --!
 	@echo # Console padding
-	@./$(BUILD_DIR)/$(PROJECT_NAME).bin
+	@./$(BUILD_DIR)/$(PROJECT_NAME).bin $(RES_SRC)

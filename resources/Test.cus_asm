@@ -1,0 +1,13 @@
+LDA R1, 0x48 # 'H'
+LDA R1, 0x65 # 'e'
+LDA R1, 0x6C # 'l'
+LDA R1, 0x6C # 'l'
+LDA R1, 0x6F # 'o'
+LDA R1, 0x20 # ' '
+LDA R1, 0x57 # 'W'
+LDA R1, 0x6F # 'o'
+LDA R1, 0x72 # 'r'
+LDA R1, 0x6C # 'l'
+LDA R1, 0x64 # 'd'
+LDA R1, 0x21 # '!'
+HLT
