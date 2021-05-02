@@ -1,5 +1,5 @@
 #pragma once
-#include "./IntDef.hpp"
+#include "../IntDef.hpp"
 #include "./Token.hpp"
 
 #include <iostream>
